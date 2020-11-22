@@ -17,14 +17,31 @@ public class MovingResultSetPointer {
 
         ResultSet rs   =   stmnt.executeQuery("SELECT * FROM REGIONS") ;
 
-        while(rs.next()){
-            System.out.println("REGION_NAME "+ rs.getString("REGION_NAME"));
+
+        while(rs.next() ){
+            System.out.println("REGION_NAME " + rs.getString("REGION_NAME") );
         }
 
-        while(rs.previous()) {
-            System.out.println("BACKWARD - REGION_NAME " + rs.getString("REGION_NAME"));
-
+//        rs.previous() ;
+//        System.out.println("REGION_NAME " + rs.getString("REGION_NAME") );
+        while(rs.previous() ){
+            System.out.println("BACKWARD - REGION_NAME " + rs.getString("REGION_NAME") );
         }
+
+        /**
+         * Other ResultSet methods for moving your pointer to specific locations
+         */
+        rs.beforeFirst(); // before first location
+        rs.first() ;  // first row
+        rs.last() ; // last row
+        rs.afterLast(); // after last location
+        rs.absolute(3) ; // move to specific row
+
+        // how to find out which row the pointer is at right now
+        rs.last();
+        int currentRowNum = rs.getRow() ;
+        System.out.println("Row Count  = " + currentRowNum);
+
 
     }
 
