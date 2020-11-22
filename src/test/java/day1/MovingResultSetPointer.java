@@ -42,6 +42,8 @@ public class MovingResultSetPointer {
         int currentRowNum = rs.getRow() ;
         System.out.println("Row Count  = " + currentRowNum);
 
+        // Moving on to next step which is practice
+
 
     }
 
