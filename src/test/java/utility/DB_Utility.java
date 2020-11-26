@@ -258,4 +258,27 @@ public class DB_Utility {
 
     }
 
+    /**
+     * A method that display all the result set data on console
+     */
+    public static void displayAllData(){
+
+        try {
+            rs.beforeFirst();
+
+            while (rs.next()) {
+
+                for (int colNum = 1; colNum <= getColumnCount(); colNum++) {
+                    System.out.print(rs.getString(colNum) + "\t");
+                }
+                System.out.println();
+            }
+            rs.beforeFirst();
+
+        } catch (SQLException e) {
+            System.out.println("ERROR WHILE PRINTING WHOLE TABLE " + e.getMessage());
+        }
+    }
+
+
 }
