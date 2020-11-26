@@ -39,6 +39,9 @@ public class UtilityPractice {
         System.out.println("Get Cell value at row 5 col JOB_TITLE "
                 + DB_Utility.getColumnDataAtRow(2, "JOB_TITLE") );
 
+        System.out.println("3rd column value "+DB_Utility.getColumnDataAsList(3));
+        System.out.println("JOB_TITLE column value "+ DB_Utility.getColumnDataAsList("JOB_TITLE"));
+
         DB_Utility.destroy();
     }
 
