@@ -26,6 +26,12 @@ public class UtilityPractice {
         int colCount = DB_Utility.getColumnCount();
         System.out.println("colCount = " + colCount);
 
+        System.out.println("All column names " + DB_Utility.getColumnNames());
+
+        System.out.println("Row data at row 3 " + DB_Utility.getRowDataAsList(3));
+
+        System.out.println("Get Cell value at row ");
+
         DB_Utility.destroy();
     }
 
