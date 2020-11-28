@@ -6,15 +6,32 @@ import java.util.*;
 
 public class DB_Utility {
 
-    static Connection conn ; // make it static field so we can reuse in every methods we write
-    static Statement stmnt ;
-    static ResultSet rs ;
+    static Connection conn; // make it static field so we can reuse in every methods we write
+    static Statement stmnt;
+    static ResultSet rs;
 
-    public static void createConnection(){
+    public static void createConnection() {
 
         String connectionStr = ConfigurationReader.getProperty("database.url");
         String username = ConfigurationReader.getProperty("database.username");
         String password = ConfigurationReader.getProperty("database.password");
+
+        try {
+            conn = DriverManager.getConnection(connectionStr, username, password);
+            System.out.println("CONNECTION SUCCESSFUL !! ");
+        } catch (SQLException e) {
+            System.out.println("CONNECTION HAS FAILED !!! " + e.getMessage());
+        }
+
+    }
+
+    // MAKE ABOVE METHOD ACCEPT 3 PARAMETERS
+    public static void createConnection(String connectionStr,String username,String password ) {
+
+//        String connectionStr = ConfigurationReader.getProperty("database.url");
+//        String username = ConfigurationReader.getProperty("database.username");
+//        String password = ConfigurationReader.getProperty("database.password");
+
         try {
             conn = DriverManager.getConnection(connectionStr, username, password);
             System.out.println("CONNECTION SUCCESSFUL !! ");
@@ -159,10 +176,10 @@ public class DB_Utility {
     /**
      * Create a method to return the cell value at certain row certain column
      *
-     * @param rowNum
+     * @param rowNum row number
+     * @param colNum column number
      * @return Cell value as String
-     * @parem colNum
-     */
+    =     */
     public static String getColumnDataAtRow(int rowNum, int colNum) {
 
         String result = "";
@@ -183,8 +200,8 @@ public class DB_Utility {
      * Create a method to return the cell value at certain row certain column
      *
      * @param rowNum row number
-     * @return Cell value as String
-     * @parem colName column name
+     * @param colName column name
+     * @return Cell value as String at specified row numeber and column number
      */
     public static String getColumnDataAtRow(int rowNum, String colName) {
 
@@ -246,7 +263,7 @@ public class DB_Utility {
                 cellValuesList.add( cellValue ) ;
 
             }
-            rs.beforeFirst();
+            rs.beforeFirst(); //Move it back to before first location
 
         } catch (SQLException e) {
             System.out.println("ERROR WHILE GETTING ONE COLUMN DATA AS LIST " + e.getMessage() );
@@ -309,14 +326,16 @@ public class DB_Utility {
 
     }
 
-    public static List<Map< String, String> > getAllDataAsListOfMap(){
-        List<Map<String, String> > rowMapList = new ArrayList<>();
+    public static List<Map<String,String> > getAllDataAsListOfMap(){
 
-        for(int rowNum = 1; rowNum <= getRowCount(); rowNum++){
-            rowMapList.add(getRowMap(rowNum));
+        List<Map<String,String> > rowMapList = new ArrayList<>();
+
+        for (int rowNum = 1; rowNum <= getRowCount() ; rowNum++) {
+
+            rowMapList.add(   getRowMap(rowNum)    ) ;
 
         }
-        return rowMapList;
+        return  rowMapList ;
     }
 
 }
