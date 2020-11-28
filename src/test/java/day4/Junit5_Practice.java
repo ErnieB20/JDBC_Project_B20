@@ -2,7 +2,7 @@ package day4;
 
 import org.junit.jupiter.api.*;
 
-public class DB_Test {
+public class Junit5_Practice {
 
     // what can we use if we want to run certain code before all test only once
     // @BeforeAll
