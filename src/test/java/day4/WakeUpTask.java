@@ -20,8 +20,12 @@ public class WakeUpTask {
         DB_Utility.runQuery(query) ;
         //DB_Utility.displayAllData();
 
-        System.out.println("DB_Utility.getRowCount() = " + DB_Utility.getRowCount() );
-        System.out.println("DB_Utility.getColumnCount() = " + DB_Utility.getColumnCount());
+        System.out.println("DB_Utility.getRowCount() = \n\t"
+                + DB_Utility.getRowCount() );
+
+        System.out.println("DB_Utility.getColumnCount() = \n\t"
+                + DB_Utility.getColumnCount()  );
+
         System.out.println("DB_Utility.getColumnDataAsList(\"FIRST_NAME\") = \n\t"
                 + DB_Utility.getColumnDataAsList("FIRST_NAME"));
 
@@ -38,6 +42,11 @@ public class WakeUpTask {
                 + DB_Utility.getAllDataAsListOfMap());
 
         System.out.println("DB_Utility.getColumnNames() = " + DB_Utility.getColumnNames());
+
+
+        DB_Utility.runQuery("SELECT * FROM COUNTRIES") ;
+        DB_Utility.displayAllData();
+
 
         DB_Utility.destroy();
 
