@@ -36,5 +36,6 @@ public class DB_Test {
     @AfterAll
     public static void tearDown(){
         DB_Utility.destroy();
+        // destroys it once
     }
 }
