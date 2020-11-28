@@ -2,10 +2,7 @@ package utility;
 
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DB_Utility {
 
@@ -15,9 +12,9 @@ public class DB_Utility {
 
     public static void createConnection(){
 
-        String connectionStr = "jdbc:oracle:thin:@54.204.75.101:1521:XE";
-        String username = "hr" ;
-        String password = "hr" ;
+        String connectionStr = ConfigurationReader.getProperty("database.url");
+        String username = ConfigurationReader.getProperty("database.username");
+        String password = ConfigurationReader.getProperty("database.password");
         try {
             conn = DriverManager.getConnection(connectionStr, username, password);
             System.out.println("CONNECTION SUCCESSFUL !! ");
